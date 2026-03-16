@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZ Group of Ltd | services & sectors</title>
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f9fafc;
+            color: #1e2b37;
+            line-height:1.5;
+            scroll-behavior:smooth;
+        }
+        :root {
+            --az-primary: #0a2540;
+            --az-secondary: #00b4d8;
+            --az-accent: #ffb703;
+            --az-light: #f1f9ff;
+            --az-gray: #5b6f82;
+            --border-light: rgba(10,37,64,0.08);
+        }
+        .wrapper { max-width:1280px; margin:0 auto; padding:0 24px; }
+        .navbar {
+            background:white; box-shadow:0 4px 20px rgba(0,0,0,0.02); padding:16px 0;
+            position:sticky; top:0; z-index:10; border-bottom:2px solid var(--az-secondary);
+        }
+        .nav-container { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+        .logo { font-size:1.8rem; font-weight:700; color:var(--az-primary); letter-spacing:-0.5px; }
+        .logo span { color:var(--az-secondary); font-weight:300; }
+        .nav-links { display:flex; gap:2rem; flex-wrap:wrap; align-items:center; }
+        .nav-links a { text-decoration:none; font-weight:500; color:var(--az-primary); transition:0.2s; font-size:1rem; border-bottom:2px solid transparent; padding-bottom:4px; }
+        .nav-links a:hover { border-bottom-color:var(--az-secondary); color:var(--az-secondary); }
+        .btn {
+            background:var(--az-secondary); color:white; border:none; padding:10px 24px; border-radius:40px;
+            font-weight:600; cursor:pointer; transition:0.2s; font-size:0.95rem; text-decoration:none; display:inline-block;
+        }
+        .btn-outline { background:transparent; border:1.5px solid var(--az-secondary); color:var(--az-primary); }
+        .btn:hover { background:var(--az-primary); color:white; border-color:var(--az-primary); }
+        .hero { background:linear-gradient(145deg,#ffffff 0%,var(--az-light) 100%); padding:64px 0; border-bottom:1px solid var(--border-light); }
+        .hero-grid { display:flex; align-items:center; gap:40px; flex-wrap:wrap; }
+        .hero-content { flex:1 1 400px; }
+        .hero-content h1 { font-size:3rem; font-weight:700; line-height:1.2; color:var(--az-primary); margin-bottom:16px; }
+        .hero-highlight { color:var(--az-secondary); border-bottom:4px solid var(--az-accent); }
+        .hero-desc { font-size:1.2rem; color:var(--az-gray); margin:24px 0 32px; max-width:550px; }
+        .hero-badge { display:flex; gap:16px; flex-wrap:wrap; }
+        section { padding:70px 0; border-bottom:1px solid rgba(0,180,216,0.1); }
+        .section-title {
+            font-size:2.2rem; font-weight:600; color:var(--az-primary); margin-bottom:16px;
+            position:relative; display:inline-block;
+        }
+        .section-title:after {
+            content:''; display:block; width:60%; height:4px; background:var(--az-accent); margin-top:8px; border-radius:4px;
+        }
+        .subhead { color:var(--az-gray); margin-bottom:48px; font-size:1.1rem; }
+        .card-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:28px; margin-top:20px; }
+        .card {
+            background:white; border-radius:24px; padding:28px 20px;
+            box-shadow:0 10px 25px -8px rgba(0,0,0,0.06); transition:all 0.25s ease;
+            border:1px solid rgba(0,180,216,0.15);
+        }
+        .card:hover { transform:translateY(-6px); box-shadow:0 25px 35px -12px rgba(10,37,64,0.12); border-color:var(--az-secondary); }
+        .card-icon { font-size:2.2rem; color:var(--az-secondary); margin-bottom:16px; }
+        .card h3 { font-size:1.4rem; font-weight:600; margin-bottom:8px; color:var(--az-primary); }
+        .card p { color:var(--az-gray); margin:12px 0 16px; font-size:0.95rem; }
+        .card-link {
+            text-decoration:none; font-weight:600; color:var(--az-secondary);
+            display:inline-flex; align-items:center; gap:6px; cursor:pointer;
+        }
+        .card-link i { transition:transform 0.2s; }
+        .card-link:hover i { transform:translateX(5px); }
+        .game-tags { display:flex; flex-wrap:wrap; gap:12px; margin:20px 0 10px; }
+        .game-tag {
+            background:var(--az-light); color:var(--az-primary); padding:6px 18px; border-radius:40px;
+            font-size:0.9rem; font-weight:500; border:1px solid var(--az-secondary); transition:0.1s; cursor:pointer;
+        }
+        .game-tag:hover { background:var(--az-secondary); color:white; }
+        .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+        .contact-info { background:var(--az-primary); color:white; padding:36px 30px; border-radius:32px; }
+        .contact-info h3 { font-size:1.8rem; margin-bottom:24px; color:white; }
+        .contact-info i { color:var(--az-accent); width:30px; }
+        .info-item { display:flex; align-items:center; gap:16px; margin:20px 0; font-size:1.1rem; }
+        .social-links { margin-top:30px; display:flex; gap:24px; }
+        .social-links a { color:white; font-size:1.8rem; transition:0.2s; }
+        .social-links a:hover { color:var(--az-accent); }
+        .contact-form { background:white; padding:36px 30px; border-radius:32px; box-shadow:0 15px 30px rgba(0,0,0,0.03); border:1px solid var(--border-light); }
+        .form-group { margin-bottom:22px; }
+        .form-group input, .form-group textarea {
+            width:100%; padding:14px 20px; border:1.5px solid #e2e9f0; border-radius:30px;
+            font-family:'Inter', sans-serif; font-size:1rem; transition:0.2s;
+        }
+        .form-group input:focus, .form-group textarea:focus { outline:none; border-color:var(--az-secondary); }
+        textarea { min-height:120px; resize:vertical; }
+        footer { background:var(--az-primary); color:#cbd5e0; padding:32px 0; text-align:center; font-size:0.95rem; }
+        .page-badge { background:var(--az-accent); color:var(--az-primary); font-size:0.75rem; font-weight:700; padding:3px 12px; border-radius:30px; display:inline-block; margin-bottom:12px; text-transform:uppercase; }
+        .sector-block { background:white; border-radius:32px; padding:32px; margin-bottom:40px; box-shadow:0 8px 20px rgba(0,0,0,0.02); border:1px solid var(--border-light); }
+        .sector-title { font-size:1.8rem; font-weight:600; color:var(--az-primary); margin-bottom:8px; display:flex; align-items:center; gap:12px; }
+        .sector-title i { color:var(--az-secondary); font-size:2rem; }
+        .service-list { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:16px; margin-top:24px; }
+        .service-item {
+            background:var(--az-light); border-radius:40px; padding:12px 20px; font-weight:500; color:var(--az-primary);
+            border:1px solid rgba(0,180,216,0.2); display:flex; align-items:center; gap:12px; transition:0.15s; cursor:pointer;
+        }
+        .service-item i { color:var(--az-secondary); font-size:1.2rem; width:24px; }
+        .service-item:hover { background:var(--az-secondary); color:white; border-color:var(--az-secondary); }
+        .service-item:hover i { color:white; }
+        .store-card { cursor:pointer; }
+        @media (max-width:700px) {
+            .nav-container { flex-direction:column; gap:16px; }
+            .hero-content h1 { font-size:2.3rem; }
+            .contact-grid { grid-template-columns:1fr; }
+        }
+        
+        /* success message styling */
+        .form-success {
+            background: #d4edda;
+            color: #155724;
+            padding: 12px 20px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+        .form-success.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="wrapper nav-container">
+            <div class="logo">AZ <span>Group</span> of Ltd</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#subsidiaries">Subsidiaries</a>
+                <a href="#services-sectors">Services & Sectors</a>
+                <a href="#stores">Stores</a>
+                <a href="#games">Games</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section id="home" class="hero">
+            <div class="wrapper hero-grid">
+                <div class="hero-content">
+                    <div class="page-badge">AZ GROUP OF LTD</div>
+                    <h1>Sectors & <span class="hero-highlight">specialised services</span></h1>
+                    <p class="hero-desc">From digital account sales to e‑commerce, gaming, and 2FA security — we cover the full spectrum of online operations.</p>
+                    <div class="hero-badge">
+                        <a href="#services-sectors" class="btn">Explore sectors <i class="fas fa-arrow-right"></i></a>
+                        <a href="#contact" class="btn btn-outline">Contact us</a>
+                    </div>
+                </div>
+                <div style="flex:1; min-width:240px;">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 320'%3E%3Crect width='400' height='320' fill='%2300b4d8' opacity='0.05'/%3E%3Ctext x='40' y='160' font-family='Inter' font-size='28' fill='%230a2540' font-weight='600'%3EAZ sectors%3C/text%3E%3Ctext x='40' y='200' font-family='Inter' font-size='18' fill='%235b6f82'%3Eaccounts · e‑commerce · security%3C/text%3E%3C/svg%3E" alt="AZ visual" style="max-width:100%; border-radius: 40px;">
+                </div>
+            </div>
+        </section>
+
+        <!-- SUBSIDIARIES -->
+        <section id="subsidiaries">
+            <div class="wrapper">
+                <h2 class="section-title">Our subsidiaries</h2>
+                <div class="subhead">Click any subsidiary to visit their store page</div>
+                <div class="card-grid">
+                    <div class="card store-card" data-url="https://www.z2u.com/shop/AccountStoreOne">
+                        <div class="card-icon"><i class="fas fa-store-alt"></i></div>
+                        <h3>Account Store One Asia</h3>
+                        <p>Digital accounts marketplace – Z2U store</p>
+                        <span class="card-link">Visit store <i class="fas fa-external-link-alt"></i></span>
+                    </div>
+                    <div class="card store-card" data-url="https://www.g2g.com/All4Gamers">
+                        <div class="card-icon"><i class="fas fa-gamepad"></i></div>
+                        <h3>All4 Gamers</h3>
+                        <p>Gaming products & accounts – G2G store</p>
+                        <span class="card-link">Visit store <i class="fas fa-external-link-alt"></i></span>
+                    </div>
+                    <div class="card store-card" data-url="https://www.playerauctions.com/store/theflash247/?producttype=Item">
+                        <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
+                        <h3>FlashSell247</h3>
+                        <p>E‑commerce platform (Theflash247 on PlayerAuctions)</p>
+                        <span class="card-link">Visit store <i class="fas fa-external-link-alt"></i></span>
+                    </div>
+                    <div class="card store-card" data-url="https://www.g2a.com/user/Gaming4you">
+                        <div class="card-icon"><i class="fas fa-dragon"></i></div>
+                        <h3>Gaming4you</h3>
+                        <p>Game accounts & items – G2A user</p>
+                        <span class="card-link">Visit store <i class="fas fa-external-link-alt"></i></span>
+                    </div>
+                    <div class="card store-card" data-url="https://2faonline.com">
+                        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>2faonline.com (Pro Ads)</h3>
+                        <p>2FA & digital security</p>
+                        <span class="card-link">Visit store <i class="fas fa-external-link-alt"></i></span>
+                    </div>
+                    <div class="card store-card" data-url="https://2fa.online/">
+                        <div class="card-icon"><i class="fas fa-headset"></i></div>
+                        <h3>2falive</h3>
+                        <p>Account support & recovery – 2fa.online</p>
+                        <span class="card-link">Visit store <i class="fas fa-external-link-alt"></i></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES & SECTORS -->
+        <section id="services-sectors">
+            <div class="wrapper">
+                <h2 class="section-title">Services & Sectors</h2>
+                <div class="subhead">Industries we operate in and the specific services we deliver</div>
+                <div class="sector-block">
+                    <div class="sector-title"><i class="fas fa-id-card"></i> Digital Account Sales & Management</div>
+                    <p style="color: var(--az-gray); margin-bottom: 16px;">Verified accounts for platforms, games, and tools — with full lifecycle management.</p>
+                    <div class="service-list">
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Selling verified accounts for various platforms</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Account recovery & restoration</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Bulk account management</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Aged accounts (social & gaming)</div>
+                    </div>
+                </div>
+                <div class="sector-block">
+                    <div class="sector-title"><i class="fas fa-shopping-bag"></i> E‑commerce & Online Store Operations</div>
+                    <p style="color: var(--az-gray); margin-bottom: 16px;">End-to-end management of digital storefronts and product sales.</p>
+                    <div class="service-list">
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Product listing & e‑commerce store management</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Inventory & order fulfillment</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Marketplace optimization (Shopify, WooCommerce)</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Pricing & competitor analysis</div>
+                    </div>
+                </div>
+                <div class="sector-block">
+                    <div class="sector-title"><i class="fas fa-dice-d6"></i> Gaming Services & Virtual Items</div>
+                    <p style="color: var(--az-gray); margin-bottom: 16px;">In-game assets, currency, and account boosting for major titles.</p>
+                    <div class="service-list">
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Selling game accounts, in-game items, and virtual currency</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Boosting & coaching services</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Skins & rare item trading</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Game key distribution</div>
+                    </div>
+                </div>
+                <div class="sector-block">
+                    <div class="sector-title"><i class="fas fa-lock"></i> Account Security & 2FA Services</div>
+                    <p style="color: var(--az-gray); margin-bottom: 16px;">Protection, recovery, and verification for individual and business accounts.</p>
+                    <div class="service-list">
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Account recovery, protection, and verification services</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Two-factor authentication (2FA) setup & consulting</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Security audits & risk assessment</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Pro ads (2faonline.com) secure solutions</div>
+                    </div>
+                </div>
+                <div class="sector-block">
+                    <div class="sector-title"><i class="fas fa-briefcase"></i> Business Consultancy & Support</div>
+                    <p style="color: var(--az-gray); margin-bottom: 16px;">Strategic advisory for online operations, digital transformation, and growth.</p>
+                    <div class="service-list">
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Business consultancy & support for online operations</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Freelance team management</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Process automation & workflow</div>
+                        <div class="service-item"><i class="fas fa-check-circle"></i> Market entry strategy</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STORES section -->
+        <section id="stores">
+            <div class="wrapper">
+                <h2 class="section-title">Stores & platforms</h2>
+                <div class="subhead">Quick access to all storefronts</div>
+                <div class="card-grid">
+                    <div class="card store-card" data-url="https://www.z2u.com/shop/AccountStoreOne"><i class="fas fa-globe card-icon" style="color:var(--az-primary)"></i><h3>AccountStoreOne</h3><p>Z2U shop</p><span class="card-link">Visit <i class="fas fa-external-link-alt"></i></span></div>
+                    <div class="card store-card" data-url="https://www.playerauctions.com/store/theflash247/?producttype=Item"><i class="fas fa-globe card-icon" style="color:var(--az-primary)"></i><h3>Theflash247</h3><p>PlayerAuctions</p><span class="card-link">Visit <i class="fas fa-external-link-alt"></i></span></div>
+                    <div class="card store-card" data-url="https://www.g2a.com/user/Gaming4you"><i class="fas fa-globe card-icon" style="color:var(--az-primary)"></i><h3>Gaming4you</h3><p>G2A user</p><span class="card-link">Visit <i class="fas fa-external-link-alt"></i></span></div>
+                    <div class="card store-card" data-url="https://www.g2g.com/All4Gamers"><i class="fas fa-globe card-icon" style="color:var(--az-primary)"></i><h3>All4Gamers</h3><p>G2G store</p><span class="card-link">Visit <i class="fas fa-external-link-alt"></i></span></div>
+                    <div class="card store-card" data-url="https://2faonline.com"><i class="fas fa-globe card-icon" style="color:var(--az-primary)"></i><h3>2faonline.com</h3><p>Pro Ads</p><span class="card-link">Visit <i class="fas fa-external-link-alt"></i></span></div>
+                    <div class="card store-card" data-url="https://2fa.online/"><i class="fas fa-globe card-icon" style="color:var(--az-primary)"></i><h3>2falive</h3><p>support (2fa.online)</p><span class="card-link">Visit <i class="fas fa-external-link-alt"></i></span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GAMES COVERED -->
+        <section id="games" style="background: white;">
+            <div class="wrapper">
+                <h2 class="section-title">Games we cover</h2>
+                <div class="subhead">Extensive inventory for all major titles</div>
+                <div class="game-tags">
+                    <span class="game-tag">Mobile Legends</span><span class="game-tag">Free Fire</span><span class="game-tag">PUBG Mobile</span>
+                    <span class="game-tag">Call of Duty (Mobile & PC)</span><span class="game-tag">FIFA Online</span><span class="game-tag">Roblox</span>
+                    <span class="game-tag">Valorant</span><span class="game-tag">Genshin Impact</span><span class="game-tag">League of Legends</span>
+                    <span class="game-tag">Apex Legends</span><span class="game-tag">Dota 2</span><span class="game-tag">Fortnite</span>
+                    <span class="game-tag">Overwatch 2</span><span class="game-tag">Rocket League</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION - আপনার ইমেইল azgroupofltd@gmail.com -->
+        <section id="contact">
+            <div class="wrapper">
+                <h2 class="section-title">Get in touch</h2>
+                <div class="subhead">We’ll respond within 24h</div>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>AZ Group HQ</h3>
+                        <div class="info-item"><i class="fas fa-map-marker-alt fa-fw"></i> 12 Marina Boulevard, #08-03, Singapore 018982</div>
+                        <div class="info-item"><i class="fas fa-phone-alt fa-fw"></i> +65 6789 1234</div>
+                        <!-- Contact ইমেইল azgroupofltd@gmail.com -->
+                        <div class="info-item"><i class="fas fa-envelope fa-fw"></i> azgroupofltd@gmail.com</div>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <!-- Formspree ফর্ম - আপনার ফর্ম আইডি বসানো হয়েছে -->
+                        <form action="https://formspree.io/f/mgonnddg" method="POST" id="contactForm">
+                            <!-- হিডেন ফিল্ড -->
+                            <input type="hidden" name="_subject" value="AZ Group Website Contact">
+                            <input type="hidden" name="_replyto" value="email">
+                            <input type="text" name="_gotcha" style="display:none">
+                            
+                            <div class="form-group"><input type="text" name="name" placeholder="Full name" required></div>
+                            <div class="form-group"><input type="email" name="email" placeholder="Email address" required></div>
+                            <div class="form-group"><textarea name="message" placeholder="Your message ..." required></textarea></div>
+                            
+                            <!-- Success message -->
+                            <div class="form-success" id="formSuccess">
+                                <i class="fas fa-check-circle"></i> Thank you! Your message has been sent to azgroupofltd@gmail.com
+                            </div>
+                            
+                            <button type="submit" class="btn" style="width:100%;" id="submitBtn">
+                                <i class="fas fa-paper-plane"></i> Send message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrapper">
+            <!-- © ২০২৬ আপডেট করা হয়েছে -->
+            <p>© 2026 AZ Group of Ltd — All rights reserved. <br> Digital Account Sales, E‑commerce, Gaming Services, 2FA Security, Business Consultancy.</p>
+            <p style="margin-top: 16px;">📍 Professional website • services & sectors highlighted</p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // store cards open URL in new tab
+            const storeCards = document.querySelectorAll('.store-card');
+            storeCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    const url = card.getAttribute('data-url');
+                    if (url && url !== '#') {
+                        window.open(url, '_blank');
+                    } else {
+                        alert('No external link set for this store.');
+                    }
+                });
+            });
+
+            // service items demo
+            document.querySelectorAll('.service-item').forEach(item => {
+                item.addEventListener('click', () => alert('Detailed service page: ' + item.innerText.trim()));
+            });
+
+            // game tags demo
+            document.querySelectorAll('.game-tag').forEach(tag => {
+                tag.addEventListener('click', () => alert(`Browse games in category: ${tag.innerText}`));
+            });
+
+            // Contact form handling with Formspree
+            const contactForm = document.getElementById('contactForm');
+            const successMsg = document.getElementById('formSuccess');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    // Disable button and show loading
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    
+                    // Hide any previous success message
+                    successMsg.classList.remove('show');
+                    
+                    try {
+                        const formData = new FormData(contactForm);
+                        
+                        const response = await fetch(contactForm.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            // Success - show message and reset form
+                            successMsg.classList.add('show');
+                            contactForm.reset();
+                            
+                            // Hide success message after 5 seconds
+                            setTimeout(() => {
+                                successMsg.classList.remove('show');
+                            }, 5000);
+                        } else {
+                            // Error
+                            const data = await response.json();
+                            if (data.errors) {
+                                alert('Error: ' + data.errors.map(error => error.message).join(', '));
+                            } else {
+                                alert('Oops! Something went wrong. Please try again.');
+                            }
+                        }
+                    } catch (error) {
+                        alert('Network error. Please check your connection and try again.');
+                    } finally {
+                        // Re-enable button
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send message';
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
